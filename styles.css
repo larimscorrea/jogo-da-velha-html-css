@@ -108,14 +108,14 @@
   color: var(--green);
   font-size: 16px;
   font-weight: 600;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .best-of-three {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: var(--terciary-color);
   font-size: 16px;
   font-weight: 400;
@@ -124,7 +124,7 @@
 }
 
 .best-of-five {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: var(--terciary-color);
   font-size: 16px;
   font-weight: 400;
@@ -154,7 +154,7 @@
   font-size: 16px;
   font-weight: 700;
   margin-top: 38px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   display: flex;
   justify-content: center;
 }
@@ -182,7 +182,7 @@
 }
 
 .winner-title {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--green);
@@ -190,7 +190,7 @@
 }
 
 .points-winner {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--gray);
@@ -204,7 +204,7 @@
 }
 
 .scene-word {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--terciary-color);
@@ -229,7 +229,7 @@
   color: var(--gray);
   font-size: 12px;
   font-weight: 700;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   margin: 2px;
   border-radius: 2px;
   text-transform: uppercase;
@@ -244,7 +244,7 @@
   border-radius: 10px;
   margin-left: 35px;
   margin-top: 98px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: var(--dark-back);
@@ -266,7 +266,7 @@
   margin-top: 50px;
   margin-left: 100px;
   margin-right: 100px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -310,7 +310,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   margin-left: 54px;
   font-size: 130px;
   font-weight: 700;
@@ -326,7 +326,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   margin-left: 54px;
   font-size: 130px;
   font-weight: 700;
@@ -336,7 +336,7 @@
   margin-right: 36px;
 }
 
-.bord-item {
+.board-item {
   width: 160px;
   height: 160px;
   background-color: var(--terciary-color);
@@ -345,20 +345,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .three {
   /*width: 450px;
   height: 200vh;*/
   background-color: var(--dark-back);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .three-title {
   color: var(--terciary-color);
   font-size: 16px;
   font-weight: 700;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   display: flex;
   justify-content: center;
   margin-top: 66px;

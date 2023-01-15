@@ -6,102 +6,43 @@ let currentMove = "X";
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
 
+const winConditionS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
 function toggleMove() {
-  if (currentMove == "X") {
-    currentMove = "O";
-  } else {
-    currentMove = "X";
-  }
+  currentMove = currentMove == "X" ? "O" : "X";
 }
 
 function verifyGame() {
-  if (
-    $bordItem0.innerHTML != "" &&
-    $bordItem0.innerHTML == $bordItem1.innerHTML &&
-    $bordItem1.innerHTML == $bordItem2.innerHTML
-  ) {
-    return currentMove;
-  }
-  if (
-    $bordItem3.innerHTML != "" &&
-    $bordItem3.innerHTML == $bordItem4.innerHTML &&
-    $bordItem4.innerHTML == $bordItem5.innerHTML
-  ) {
-    return currentMove;
-  }
-  if (
-    $bordItem6.innerHTML != "" &&
-    $bordItem6.innerHTML == $bordItem7.innerHTML &&
-    $bordItem7.innerHTML == $bordItem8.innerHTML
-  ) {
-    return currentMove;
-  }
-}
+  let filledFields = 0;
 
-$bordItem0.addEventListener("click", function () {
-  if ($bordItem0.innerHTML != "") {
-    return;
-  }
-  $bordItem0.innerHTML = currentMove;
-  const gameResult = verifyGame();
+  for (const condition of winConditions) {
+    const filterIndex0 = condition[0];
+    const filterIndex1 = condition[1];
+    const filterIndex2 = condition[2];
 
-  if (gameResult == "X" || gameResult == "O") {
-    alert(currentMove);
+    const $field1 = $boardList[fieldIndex0];
+    const $field2 = $boardList[fieldIndex2];
+    const $field3 = $boardList[fieldIndex3];
+
+    if ($field1.innerHTML != "" && $field1.innerHTML == $field2.innerHTML && $field2.innerHTML == $field3.innerHTML) {
+      return currentMove;
+    }
   }
 
-  toggleMove();
-});
-
-$bordItem1.addEventListener("click", function () {
-  if ($bordItem1.innerHTML != "") {
-    return;
+  for (const $field of $boardList) {
+    if ($field.innerHTML != "") filledFields++;
   }
-  $boardItem1.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
 
-$bordItem2.addEventListener("click", function () {
-  $bordItem2.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
-
-$bordItem3.addEventListener("click", function () {
-  $bordItem3.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
-
-$bordItem4.addEventListener("click", function () {
-  $bordItem4.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
-
-$bordItem5.addEventListener("click", function () {
-  $bordItem5.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
-
-$bordItem6.addEventListener("click", function () {
-  $bordItem6.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
-
-$bordItem7.addEventListener("click", function () {
-  $bordItem7.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
-
-$bordItem8.addEventListener("click", function () {
-  $bordItem8.innerHTML = currentMove;
-  verifyGame();
-  toggleMove();
-});
+  if (filledFields == 9) return 'draw'
 
 function resetBattlefield() {
   for (const $boardItem of $boardList) {
@@ -110,11 +51,10 @@ function resetBattlefield() {
 }
 
 function move(moveIndex) {
-  const $boardItem = $bordList(boardIndex)[boardIndex];
+  const $boardItem = $boardList(boardIndex)[boardIndex];
 
-  if ($boardItem.innerHTML != "") {
-    return;
-  }
+  if ($boardItem.innerHTML != "") return;
+
   $boardItem.innerHTML = currentMove;
   const gameResult = verifyGame();
 
@@ -133,25 +73,23 @@ function move(moveIndex) {
 }
 
 function addPoint(winner) {
-  if (winner == "X") {
-    scorePlayer1++;
-  }
-  if (winner == "O") {
-    scorePlayer2++;
-  }
+  if (winner == "X") scorePlayer1++;
+  if (winner == "O") scorePlayer2++;
 }
 
 function printScore() {
-  $score1.innerHTML = scorePlayer1;
-  $score2.innerHTML = scorePlayer2;
+  $score1.innerHTML = scorePlayer1 < 10 ? "0" + scorePlayer1 : scorePlayer1;
+  $score2.innerHTML = scorePlayer2 < 10 ? "0" + scorePlayer2 : scorePlayer2;
+  // $score1.innerHTML = String(scorePlayer1).padStart(2, "0"); -> forma de substituir o if e o else e a forma acima
+  // $score2.innerHTML = String(scorePlayer2).padStart(2, "0")
 }
 
 function addBoardListeners() {
   for (let index = 0; index < $boardList.length; index++) {
     const $boardItem = $boardList[index];
 
-    $bordItem0.addEventListener("click", function () {
-      moveBy(index);
+    $boardItem0.addEventListener("click", function () {
+      move(index);
     });
   }
 }
