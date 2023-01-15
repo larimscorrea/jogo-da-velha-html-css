@@ -1,14 +1,10 @@
-const $bordItem0 = document.querySelector(".bord-item0");
-const $bordItem1 = document.querySelector(".bord-item1");
-const $bordItem2 = document.querySelector(".bord-item2");
-const $bordItem3 = document.querySelector(".bord-item3");
-const $bordItem4 = document.querySelector(".bord-item4");
-const $bordItem5 = document.querySelector(".bord-item5");
-const $bordItem6 = document.querySelector(".bord-item6");
-const $bordItem7 = document.querySelector(".bord-item7");
-const $bordItem8 = document.querySelector(".bord-item8");
+const $boardList = document.querySelectorAll(".board-item");
+const $score1 = document.querySelector(".score-1");
+const $score2 = document.querySelector(".score-2");
 
 let currentMove = "X";
+let scorePlayer1 = 0;
+let scorePlayer2 = 0;
 
 function toggleMove() {
   if (currentMove == "X") {
@@ -106,3 +102,58 @@ $bordItem8.addEventListener("click", function () {
   verifyGame();
   toggleMove();
 });
+
+function resetBattlefield() {
+  for (const $boardItem of $boardList) {
+    $boardItem.innerHTML = "";
+  }
+}
+
+function move(moveIndex) {
+  const $boardItem = $bordList(boardIndex)[boardIndex];
+
+  if ($boardItem.innerHTML != "") {
+    return;
+  }
+  $boardItem.innerHTML = currentMove;
+  const gameResult = verifyGame();
+
+  if (gameResult == "X" || game == "O") {
+    // alert(currentMove);
+    // resetBattlefield();
+    addPoint(gameResult);
+    printScore();
+    setTimeout(resetBattlefield, 1000);
+  }
+  if (gameResult == "draw") {
+    // alert("Empate");
+    // resetBattlefield();
+    setTimeout(resetBattlefield, 1000);
+  }
+}
+
+function addPoint(winner) {
+  if (winner == "X") {
+    scorePlayer1++;
+  }
+  if (winner == "O") {
+    scorePlayer2++;
+  }
+}
+
+function printScore() {
+  $score1.innerHTML = scorePlayer1;
+  $score2.innerHTML = scorePlayer2;
+}
+
+function addBoardListeners() {
+  for (let index = 0; index < $boardList.length; index++) {
+    const $boardItem = $boardList[index];
+
+    $bordItem0.addEventListener("click", function () {
+      moveBy(index);
+    });
+  }
+}
+
+addBoardListeners();
